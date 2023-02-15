@@ -1,0 +1,145 @@
+body {
+    background-image: url("../Immagini/Immagini_Regole/craft.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+h1 {
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 400%;
+	font-weight: 900;
+	color: #990000;
+}
+
+h2{
+	font-family: Arial, Verdana, sans-serif;
+	font-size: 200%;
+	font-weight: 500;
+	color: black;
+}
+
+#logo{
+float:top;
+margin-top:0%; left:-10%;
+position:relative;
+}
+
+#container{
+margin:0 auto;
+padding:0;
+}
+
+#MM{
+float:left;
+margin-top:0%; left:-65%;
+position:relative;
+}
+
+
+#MMtxt{
+float:left;
+margin-top:-8%; left:-65%;
+position:relative;
+}
+
+
+#BL{
+float:left;
+margin-top:0%; left:-65%;
+position:relative;
+}
+
+#BLtxt{
+float:left;
+margin-top:-8%; left:-65%;
+position:relative;
+}
+
+
+
+#Coal{
+float:left;
+margin-top:5%; left:-50%;
+position:relative;
+text-align:center;
+}
+#Iron{
+float:left;
+margin-top:5%; left: -20%;
+position:relative; 
+text-align:center;
+}
+#Ametista{
+float:left;
+margin-top:5%; left:11%;
+position:relative;
+text-align:center;
+}
+#Lapis{
+float:left;
+margin-top:-41.5%; left:127%;
+position:relative;
+text-align:center;
+}
+
+#Redstone{
+float:left;
+margin-top:5%; left:-50%;
+position:relative;
+text-align:center;
+}
+
+#Gold{
+float:left;
+margin-top:5%; left:-20%;
+position:relative;
+text-align:center;
+}
+#Emerald{
+float:left;
+margin-top:5%; left:11%;
+position:relative;
+text-align:center;
+}
+#Diamond{
+float:left;
+margin-top:-41.5%; left:127%;
+position:relative;
+text-align:center;
+}
+
+#DF{
+float:left;
+margin-top:-5%; left:-65%;
+position:relative;
+}
+
+#DFtxt{
+float:left;
+margin-top:-10%; left:-65%;
+position:relative;
+}
+
+#IC{
+float:left;
+margin-top:-5%; left:-65%;
+position:relative;
+}
+
+#PSC{
+float:left;
+margin-top:0%; left:-65%;
+position:relative;
+}
+#PSS{
+float:left;
+margin-top:0%; left:-65%;
+position:relative;
+}
+#ERR{
+float:left;
+margin-top:-103.5%; left:65%;
+position:relative;
+}
+
+

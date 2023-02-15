@@ -1,0 +1,76 @@
+body {
+    background-image: url("../Immagini/Immagini_ModD/nether.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+	
+}
+
+h1 {
+	font-family: Arial, Verdana, sans-serif;
+	color: white;
+}
+
+
+#Errore{
+float:left;
+margin-top:-88.3%; left:-38%;
+position:relative;
+}
+
+#Logo{
+    text-align: center;
+	position: absolute;
+	left: 0%;
+	top: 0%;
+	width: 100%;
+    height: 15%;
+	
+}
+
+#Attempt{
+    position: absolute;
+	left: 25%;
+	top: 15%;
+	width: 32%;
+    height: 74%;	
+}
+
+#Output{
+    position: absolute;
+	left: 58%;
+	top: 15%;
+	width: 17%;
+    height: 74%;
+	
+}
+
+#Input{
+    position: absolute;
+	left: 25%;
+	top: 90%;
+	width: 50%;
+    height: 10%;
+	text-align: center;
+
+}
+
+#Input img,p{
+	vertical-align: middle;
+	display: inline;
+}
+
+#Input p.spazio{
+	margin-right:5%;
+	margin-top:2%;
+}
+
+#Input img.spazio{
+	margin-right:5%;
+	margin-top:3%;
+	margin-bottom:5%;
+}
+
+#Input img.destra{
+	margin-right:1%;
+	
+}

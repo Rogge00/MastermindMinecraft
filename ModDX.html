@@ -1,0 +1,349 @@
+<html>
+<head>
+<link href="Fogli_CSS\ModD.css" rel="stylesheet" type="text/css" media="all" />
+<title>Mastermind - Difficile Dev</title>
+
+<script type="text/javascript">
+	var i=1;
+	var attempt=1;
+	var vittoria=false;
+	
+	
+	
+	var a=[];
+    var b=[];
+	var ris=[];
+    var i3,j;
+	
+	for(i3=0; i3<8; i3++){
+		b[i3]=0;
+	}
+    var c2;
+    for(i3=0; i3<5; i3++){
+        a[i3]=Math.floor((Math.random() * (8)));      
+    }
+	alert ("La combinazione segreta è:")
+	alert(a[0]+" "+a[1]+" "+a[2]+" "+a[3]+" "+a[4]);
+	
+	
+	
+	
+	function Mineral(c){
+		if(i<6){
+			document.getElementById("t"+attempt+"n"+i).src ="Immagini/Immagini_ModD/"+c+".png";
+			
+			switch(c){
+				case "Coal":
+					ris[i-1]=0;
+					
+					break;
+				case "Iron":
+					ris[i-1]=1;
+					
+					break;
+				case "Ametista":
+					ris[i-1]=2;
+					
+					break;	
+				case "Lapis":
+					ris[i-1]=3;
+					
+					break;	
+				case "Redstone":
+					ris[i-1]=4;
+					
+					break;	
+				case "Gold":
+					ris[i-1]=5;
+					
+					break;	
+				case "Emerald":
+					ris[i-1]=6;
+					
+					break;	
+				case "Diamond":
+					ris[i-1]=7;
+					
+					break;	
+			}
+			
+			Search();
+		}
+		//alert(i);
+		return;
+	}
+	
+	function Search(){
+		i=1;
+		while(document.getElementById("t"+attempt+"n"+i).src.indexOf("Stone")==-1){
+			i++;
+		}
+		return;
+	}
+	
+	
+	function Done(){
+		if(i!=6){
+			//alert("Non hai inserito tutti i colori!");
+			document.getElementById("inizia").src ="Immagini/Immagini_ModD/Errore.png";
+			setTimeout(function() {document.getElementById("inizia").src ="Immagini/Immagini_ModD/pix.svg" ;},500);
+			return;
+		}
+		
+		Controllo();
+		attempt++;
+		if(attempt==8&&vittoria==false){
+
+			document.getElementById("Input").innerHTML="<img src=\"Immagini/Immagini_ModD/lose.gif\"><br><h1>Hai perso...  Risultato:</h1>"+PrintOut()+"<br><br><a href=\"\"><img src = \"Immagini/Immagini_ModD/Respawn.png\"  class=\"destra\"></a><br><br><a href=\"Index.html\"><img src = \"Immagini/Immagini_ModD/HomePage.png\" ></a>";
+		}
+		i=1;
+		return;
+	}
+	
+	function PrintOut(){
+		var colori="";
+		var i2;
+		for(i2=0; i2<5; i2++){
+			switch(a[i2]){
+				case 0:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Coal.png\"  height=\"100%;\">";
+					
+					break;
+				case 1:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Iron.png\"  height=\"100%;\">";
+					
+					break;
+				case 2:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Ametista.png\" height=\"100%;\">";
+					
+					break;	
+				case 3:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Lapis.png\"  height=\"100%;\">";
+					
+					break;	
+				case 4:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Redstone.png\"  height=\"100%;\">";
+					
+					break;	
+				case 5:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Gold.png\"  height=\"100%;\">";
+					
+					break;	
+				case 6:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Emerald.png\"  height=\"100%;\">";
+					
+					break;	
+				case 7:
+					colori=colori+"<img src = \"Immagini/Immagini_ModD/Diamond.png\"  height=\"100%;\">";
+					
+					break;	
+			}
+			
+		}
+		//alert(colori);
+		return colori;
+	}
+	
+	function Controllo(){
+		var a2=[];
+		var ris2=[];
+		//alert(ris[0]+" "+ris[1]+" "+ris[2]+" "+ris[3]+" "+ris[4]);
+		var gg=0;
+		var gs=0;
+		var i2;
+		for(i2=0;i2<5;i2++){
+			a2[i2]=false;
+		}
+		
+		for(i2=0;i2<5;i2++){
+			ris2[i2]=false;
+		}
+		
+		for(i2=0; i2<5; i2++){
+			if(ris[i2]==a[i2]){
+				gg++;
+				a2[i2]=true;
+				ris2[i2]=true;
+			}
+		}
+		
+		for(i2=0; i2<5; i2++){
+			
+			if(ris2[i2]==false){
+				for(j=0; j<5; j++){
+					if(a2[j]==false && a[j]==ris[i2] ){
+						gs++;
+						a2[j]=true;
+						ris2[i2]=true;
+						break;
+					}
+				}
+			}
+		}
+			
+		
+		//alert("gg= "+gg+" gs= "+gs);
+		Pos_cor_scor(gg,gs);
+		if(gg==5){
+			document.getElementById("Input").innerHTML="<img src=\"Immagini/Immagini_ModD/win.gif\"><br><a href=\"\"><img src = \" Immagini/Immagini_ModD/Respawn.png\" class=\"spazio\"></a><a href=\"Index.html\" ><br><img src = \" Immagini/Immagini_ModD/HomePage.png\" class=\"spazio\"></a>";
+			vittoria=true;
+		}
+		return;
+	}
+	
+	function Pos_cor_scor(Giusti, Sbagliati){
+		var n=1;
+		for(;Giusti>0;Giusti--){
+			document.getElementById("t"+attempt+"r"+n).src ="Immagini/Immagini_ModD/Pos_cor.png";	
+			n++;
+		}
+		for(;Sbagliati>0;Sbagliati--){
+			document.getElementById("t"+attempt+"r"+n).src ="Immagini/Immagini_ModD/Pos_scor.png";	
+			n++;
+		}
+		return;
+	}
+	
+	function Del(c){
+		if(attempt==parseInt(c[1])){
+			i=parseInt(c[3]);
+			document.getElementById("t"+attempt+"n"+i).src ="Immagini/Immagini_ModD/Stone.png";
+		}
+		Search();
+		return;
+	}
+</script>
+</head>
+<body>
+<div id="Logo">
+<a href="index.html"><img src = "Immagini/Immagini_ModD/ModD.png"  height="80%;"  ></a>
+</div>
+<div id="Attempt">
+		<center>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t1n1" width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t1n2" width="16%" onclick="Del(id);"  ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t1n3" width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t1n4" width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t1n5" width="16%" onclick="Del(id);" ></a>
+		<br>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t2n1" width="16%" onclick="Del(id);"  ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t2n2" width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t2n3" width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t2n4" width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t2n5" width="16%" onclick="Del(id);" ></a>
+		<br>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t3n1"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t3n2"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t3n3"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t3n4"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t3n5"  width="16%" onclick="Del(id);" ></a>
+		<br>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t4n1"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t4n2"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t4n3"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t4n4"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t4n5"  width="16%" onclick="Del(id);" ></a>
+		<br>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t5n1"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t5n2"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t5n3"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t5n4"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t5n5"  width="16%" onclick="Del(id);" ></a>
+		<br>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t6n1"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t6n2"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t6n3"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t6n4"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t6n5"  width="16%" onclick="Del(id);" ></a>
+		<br>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t7n1"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t7n2"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t7n3"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t7n4"  width="16%" onclick="Del(id);" ></a>
+		<a href="javascript:void(0)"><img src = "Immagini/Immagini_ModD/Stone.png" id="t7n5"  width="16%" onclick="Del(id);" ></a>
+		<br>
+		</center>
+</div>
+<div id="Output">
+		<center>
+		<br>
+		<br>
+		<img src = "Immagini/Immagini_ModD/void.png" id="t1r1" width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t1r2" width="16%" onclick="Del(id);"  >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t1r3" width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t1r4" width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t1r5" width="16%" onclick="Del(id);" >
+		<br>
+		<br>
+		<br>
+		<img src = "Immagini/Immagini_ModD/void.png" id="t2r1" width="16%" onclick="Del(id);"  >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t2r2" width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t2r3" width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t2r4" width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t2r5" width="16%" onclick="Del(id);" >
+		<br>
+		<br>
+		<br>
+		<img src = "Immagini/Immagini_ModD/void.png" id="t3r1"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t3r2"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t3r3"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t3r4"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t3r5"  width="16%" onclick="Del(id);" >
+		<br>
+		<br>
+		<br>
+		<br>
+		<img src = "Immagini/Immagini_ModD/void.png" id="t4r1"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t4r2"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t4r3"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t4r4"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t4r5"  width="16%" onclick="Del(id);" >
+		<br>
+		<br>
+		<br>
+		<br>
+		<img src = "Immagini/Immagini_ModD/void.png" id="t5r1"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t5r2"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t5r3"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t5r4"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t5r5"  width="16%" onclick="Del(id);" >
+		<br>
+		<br>
+		<br>
+		<img src = "Immagini/Immagini_ModD/void.png" id="t6r1"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t6r2"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t6r3"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t6r4"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t6r5"  width="16%" onclick="Del(id);" >
+		<br>
+		<br>
+		<br>
+		<img src = "Immagini/Immagini_ModD/void.png" id="t7r1"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t7r2"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t7r3"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t7r4"  width="16%" onclick="Del(id);" >
+		<img src = "Immagini/Immagini_ModD/void.png" id="t7r5"  width="16%" onclick="Del(id);" >
+		<br>
+		
+		</center>
+</div>
+<div id="container" style="width:700px;">
+<div id="Input">
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Coal.png"  height="100%;" onclick="Mineral('Coal');" ></a>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Iron.png"  height="100%;" onclick="Mineral('Iron');"></a>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Ametista.png"  height="100%;" onclick="Mineral('Ametista');"></a>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Lapis.png"  height="100%;" onclick="Mineral('Lapis');"></a>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Redstone.png"  height="100%;" onclick="Mineral('Redstone');"></a>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Gold.png"  height="100%;" onclick="Mineral('Gold');"></a>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Emerald.png"  height="100%;" onclick="Mineral('Emerald');" ></a>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Diamond.png"  height="100%;" onclick="Mineral('Diamond');" ></a>
+		<br>
+		<br>
+		<a href="javascript:void(0)"><img src = " Immagini/Immagini_ModD/Done.png"  height="80%;" onclick="Done();" align="center";></a>
+		
+		<div id="Errore">
+		<a href="javascript:void(0)"><img id="inizia"  height="280%;"></a>
+		</div>	
+</div>
+</body>
+</html>

@@ -1,0 +1,205 @@
+body {
+    background-image: url("../Immagini/Immagini_ModX/X.png");
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+
+.wrap {
+  margin-top: 150px;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+}
+
+.cube {
+  margin: auto;
+  position: relative;
+  height: 180px;
+  width: 180px;
+  transform-style: preserve-3d;
+}
+
+.cube > div {
+  position: absolute;
+  box-sizing: border-box;
+  padding: 1px;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+  background-color: #000;
+  border: solid 1px #eeeeee;
+  color: #ffffff;
+}
+
+.front {
+  transform: translateZ(80px);
+}
+
+.back {
+  transform: translateZ(-100px) rotateY(180deg);
+}
+
+.right {
+  transform: rotateY(-270deg) translateX(100px);
+  transform-origin: top right;
+}
+
+.left {
+  transform: rotateY(270deg) translateX(-100px);
+  transform-origin: center left;
+}
+
+.top {
+  transform: rotateX(-270deg) translateY(-100px);
+  transform-origin: top center;
+}
+
+.bottom {
+  transform: rotateX(270deg) translateY(100px);
+  transform-origin: bottom center;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.cube {
+  animation: rotate 20s infinite linear;
+}
+
+
+.button {
+    border: none;
+    padding: 30px 60px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	font-size: 44px;
+	border-radius: 8px;
+}
+
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+#logo{
+float:top;
+top:0%; left:-18%;
+position:relative;
+}
+
+
+#container{
+margin:0 auto;
+padding:0;
+}
+
+#CUBO1{ /*redstone*/
+float:left;
+margin-top:40%; left:-45%;
+position:relative;
+}
+#CUBO2{ /*emerald*/
+float:left;
+top:-8%; left:40%;
+position:relative;
+}
+#CUBO3{ /*gold*/
+float:left;
+top:-8%; left:-50%;
+position:relative;
+}
+#CUBO4{ /*diamond*/
+float:left;
+margin-top:-10%; left:90%;
+position:relative;
+}
+/*
+#CUBO5{ /*coal
+float:left;
+margin-top:-60%; left:-115%;
+position:relative;
+}
+#CUBO6{ /*ametista
+float:left;
+margin-top:-60%; left:70%;
+position:relative;
+}
+#CUBO7{ /*iron
+float:left;
+margin-top:50%; left:-98%;
+position:relative;
+}
+#CUBO8{ /*coal
+float:left;
+margin-top:-50%; left:115%;
+position:relative;
+}
+*/
+
+
+#crazy{
+float:left;
+margin-top:-25%; left:-5%; 
+position:relative;
+}
+
+#BottoneR{
+float:left;
+margin-top:-45%; left:-19%;  
+position:relative;
+}
+
+#difficolta{
+float:left;
+margin-top:30%; left:2%; 
+position:relative;
+}
+
+
+#normale{
+float:left;
+margin-top:15%; left:-15%; 
+position:relative;
+}
+#BottoneNORM{
+float:left;
+margin-top:48%; left:-79%; 
+position:relative;
+}
+#difficile{
+float:left;
+margin-top:15%; left:59%;  
+position:relative;	
+}
+#BottoneDIFF{
+float:left;
+margin-top:-16%; left:84%; 
+position:relative;
+}
+
+/*#spade{
+float:left;
+margin-top:95%; left:55%; 
+position:relative;
+}*/
+
+
+
+
+
+
